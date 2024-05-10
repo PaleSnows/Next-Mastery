@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 
 interface User {
   id: number;
@@ -12,13 +12,16 @@ const UserDetail = async () => {
 
   return (
     <>
+      <button className="bg-slate-400 p-4 rounded-lg">Users</button>
       <h1>Users</h1>
-      {users.map((user) => (
-        <li key={user.id}>
-          {/* <Link href={"/users?sortOrder=name"}>Name</Link> */}
-          {user.name}
-        </li>
-      ))}
+      <Suspense fallback={<p>Loading...</p>}>
+        {users.map((user) => (
+          <li key={user.id}>
+            {/* <Link href={"/users?sortOrder=name"}>Name</Link> */}
+            {user.name}
+          </li>
+        ))}
+      </Suspense>
     </>
   );
 };
