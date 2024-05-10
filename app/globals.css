@@ -28,7 +28,7 @@ body {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  h1{
+    @apply font-extrabold text-2xl mb-3
   }
 }
